@@ -41,8 +41,8 @@ public class PartyManager {
             }
         } else {
             createParty(sender);
-            invitePlayer(sender, player);
             sender.sendMessage(new TextComponent(plugin.getPrefix() + "Du hast eine neue Party erstellt"));
+            invitePlayer(sender, player);
         }
     }
 
@@ -75,6 +75,23 @@ public class PartyManager {
         player.sendMessage(new TextComponent(plugin.getPrefix() + "Du besitzt keine Anfrage von diesem Spieler"));
     }
 
+    public void kickPlayer(ProxiedPlayer sender, ProxiedPlayer player) {
+        Party party = getParty(sender);
+        if (party != null) {
+            if (party.getLeader().equals(sender)) {
+                if (party.getPlayers().contains(player)) {
+                    party.kickPlayer(player);
+                } else {
+                    sender.sendMessage(new TextComponent(plugin.getPrefix() + "Dieser Spieler ist nicht in der Party"));
+                }
+            } else {
+                sender.sendMessage(new TextComponent(plugin.getPrefix() + "Du bist nicht der Leader der Party"));
+            }
+        } else {
+            sender.sendMessage(new TextComponent(plugin.getPrefix() + "Du bist in keiner Party"));
+        }
+    }
+
     public Party getParty(ProxiedPlayer player) {
         for (Party party : parties) {
             if (party.getPlayers().contains(player) || party.getLeader().equals(player)) {
@@ -82,5 +99,9 @@ public class PartyManager {
             }
         }
         return null;
+    }
+    
+    public List<Party> getParties(){
+        return parties;
     }
 }

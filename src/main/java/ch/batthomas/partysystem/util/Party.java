@@ -33,6 +33,34 @@ public class Party {
         }
     }
 
+    public void setLeader(ProxiedPlayer player) {
+        if (players.contains(player)) {
+            players.add(leader);
+            leader = player;
+            players.remove(player);
+        }
+    }
+
+    public void kickPlayer(ProxiedPlayer player) {
+        removePlayer(player);
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "Du wurdest aus der Party gekickt"));
+        broadcastMessage(player.getName() + " wurde aus der Party gekickt");
+    }
+
+    public void removePlayer(ProxiedPlayer player) {
+        players.remove(player);
+        if (players.isEmpty()) {
+            plugin.getPartyManager().getParties().remove(this);
+            broadcastMessage("Die Party wurde aufgelöst");
+        }
+    }
+
+    public void removeLeader() {
+        plugin.getPartyManager().getParties().remove(this);
+        broadcastMessage("Die Party wurde aufgelöst");
+
+    }
+
     public void removeInvitation(Invitation invitation) {
         invitations.remove(invitation.getPlayer());
     }
@@ -44,14 +72,6 @@ public class Party {
 
     public Invitation getInvitation(ProxiedPlayer player) {
         return invitations.get(player);
-    }
-
-    public void setLeader(ProxiedPlayer player) {
-        if (players.contains(player)) {
-            players.add(leader);
-            leader = player;
-            players.remove(player);
-        }
     }
 
     public void broadcastMessage(String message) {
