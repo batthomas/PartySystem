@@ -58,7 +58,6 @@ public class Party {
     public void removeLeader() {
         plugin.getPartyManager().getParties().remove(this);
         broadcastMessage("Die Party wurde aufgelöst");
-
     }
 
     public void removeInvitation(Invitation invitation) {

@@ -1,6 +1,8 @@
 package ch.batthomas.partysystem;
 
 import ch.batthomas.partysystem.command.PartyCommand;
+import ch.batthomas.partysystem.listener.ProxyDisconnectListener;
+import ch.batthomas.partysystem.listener.ProxySwitchListener;
 import ch.batthomas.partysystem.manager.PartyManager;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -18,9 +20,12 @@ public class PartySystem extends Plugin {
         prefix = "§l§5Party §r§8| §7";
         registerCommands();
         registerManagers();
+        registerListeners();
     }
 
     private void registerListeners() {
+        this.getProxy().getPluginManager().registerListener(this, new ProxyDisconnectListener(this));
+        this.getProxy().getPluginManager().registerListener(this, new ProxySwitchListener(this));
 
     }
 

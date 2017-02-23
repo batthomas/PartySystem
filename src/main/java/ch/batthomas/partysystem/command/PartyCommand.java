@@ -44,7 +44,11 @@ public class PartyCommand extends Command {
             } else if (args[0].equalsIgnoreCase("leave")) {
                 Party party = plugin.getPartyManager().getParty(player);
                 if (party != null) {
-                    party.removePlayer(player);
+                    if (party.getLeader().equals(player)) {
+                        party.removeLeader();
+                    } else {
+                        party.removePlayer(player);
+                    }
                 } else {
                     player.sendMessage(new TextComponent(plugin.getPrefix() + "Du bist in keiner Party"));
                 }
