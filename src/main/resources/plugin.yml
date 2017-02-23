@@ -1,0 +1,7 @@
+name: PartySystem
+version: 1.0
+description: PartySystem for Bungeecord
+author: batthomas
+main: ch.batthomas.partysystem.PartySystem
+commands:
+    party:
