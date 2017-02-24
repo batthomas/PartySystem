@@ -27,7 +27,7 @@ public class PartyCommand extends Command {
             return;
         }
         ProxiedPlayer player = (ProxiedPlayer) cs;
-        if (args[0] != null && args[0].equalsIgnoreCase("chat")) {
+        if (args.length > 2 && args[0] != null && args[0].equalsIgnoreCase("chat")) {
             Party party = plugin.getPartyManager().getParty(player);
             if (party != null) {
                 StringBuilder sb = new StringBuilder();
@@ -94,6 +94,6 @@ public class PartyCommand extends Command {
         player.sendMessage(new TextComponent(plugin.getPrefix() + "/party accept <Player>"));
         player.sendMessage(new TextComponent(plugin.getPrefix() + "/party deny <Player>"));
         player.sendMessage(new TextComponent(plugin.getPrefix() + "/party kick <Player>"));
-        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party chat <Player>"));
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party chat <Message>"));
     }
 }
