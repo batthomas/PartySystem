@@ -22,7 +22,6 @@ public class ProxyDisconnectListener implements Listener {
     
     @EventHandler
     public void onDisconnect(PlayerDisconnectEvent e){
-        System.err.println("Ai");
         ProxiedPlayer player = e.getPlayer();
         Party party = plugin.getPartyManager().getParty(player);
         if(party != null){

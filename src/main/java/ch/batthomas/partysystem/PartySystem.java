@@ -26,7 +26,6 @@ public class PartySystem extends Plugin {
     private void registerListeners() {
         this.getProxy().getPluginManager().registerListener(this, new ProxyDisconnectListener(this));
         this.getProxy().getPluginManager().registerListener(this, new ProxySwitchListener(this));
-
     }
 
     private void registerCommands() {

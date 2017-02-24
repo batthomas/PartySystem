@@ -27,7 +27,19 @@ public class PartyCommand extends Command {
             return;
         }
         ProxiedPlayer player = (ProxiedPlayer) cs;
-        if (args.length == 1) {
+        if (args[0] != null && args[0].equalsIgnoreCase("chat")) {
+            Party party = plugin.getPartyManager().getParty(player);
+            if (party != null) {
+                StringBuilder sb = new StringBuilder();
+                for (int amount = 1; amount < args.length; amount++) {
+                    sb.append(args[amount]).append(" ");
+                }
+                party.broadcastMessage(player.getName() + " §8» §7" + sb.toString());
+            } else {
+                player.sendMessage(new TextComponent(plugin.getPrefix() + "Du bist in keiner Party"));
+            }
+            return;
+        } else if (args.length == 1) {
             if (args[0].equalsIgnoreCase("list")) {
                 Party party = plugin.getPartyManager().getParty(player);
                 if (party != null) {
@@ -76,10 +88,12 @@ public class PartyCommand extends Command {
             }
         }
         player.sendMessage(new TextComponent(plugin.getPrefix() + "- Party Verwaltung -"));
-        player.sendMessage(new TextComponent(plugin.getPrefix() + "/friend list"));
-        player.sendMessage(new TextComponent(plugin.getPrefix() + "/friend invite <Player>"));
-        player.sendMessage(new TextComponent(plugin.getPrefix() + "/friend accept <Player>"));
-        player.sendMessage(new TextComponent(plugin.getPrefix() + "/friend deny <Player>"));
-        player.sendMessage(new TextComponent(plugin.getPrefix() + "/friend kick <Player>"));
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party list"));
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party leave"));
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party invite <Player>"));
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party accept <Player>"));
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party deny <Player>"));
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party kick <Player>"));
+        player.sendMessage(new TextComponent(plugin.getPrefix() + "/party chat <Player>"));
     }
 }

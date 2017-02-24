@@ -27,22 +27,20 @@ public class PartyManager {
     }
 
     public void invitePlayer(ProxiedPlayer sender, ProxiedPlayer player) {
-        Party party = getParty(sender);
-        if (party != null) {
-            if (party.getLeader().equals(sender)) {
-                if (!party.getPlayers().contains(player)) {
-                    party.invitePlayer(player);
-                    sender.sendMessage(new TextComponent(plugin.getPrefix() + "Du hast " + player.getName() + " erfolgreich eingeladen"));
-                } else {
-                    sender.sendMessage(new TextComponent(plugin.getPrefix() + "Dieser Spieler ist schon in deiner Party"));
-                }
-            } else {
-                sender.sendMessage(new TextComponent(plugin.getPrefix() + "Du bist nicht der Leader der Party"));
-            }
-        } else {
+        if (getParty(sender) == null) {
             createParty(sender);
             sender.sendMessage(new TextComponent(plugin.getPrefix() + "Du hast eine neue Party erstellt"));
-            invitePlayer(sender, player);
+        }
+        Party party = getParty(sender);
+        if (party.getLeader().equals(sender)) {
+            if (!party.getPlayers().contains(player)) {
+                party.invitePlayer(player);
+                sender.sendMessage(new TextComponent(plugin.getPrefix() + "Du hast " + player.getName() + " erfolgreich eingeladen"));
+            } else {
+                sender.sendMessage(new TextComponent(plugin.getPrefix() + "Dieser Spieler ist schon in deiner Party"));
+            }
+        } else {
+            sender.sendMessage(new TextComponent(plugin.getPrefix() + "Du bist nicht der Leader der Party"));
         }
     }
 
@@ -100,8 +98,8 @@ public class PartyManager {
         }
         return null;
     }
-    
-    public List<Party> getParties(){
+
+    public List<Party> getParties() {
         return parties;
     }
 }
