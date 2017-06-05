@@ -12,7 +12,6 @@ Das Party System ist eines der verbreitesten Systeme der Minecraft Netzwerke. De
 * Mit **/party chat <Message>** können die Spieler in einem internen Chat schreiben
 </details>
 
-===
 
 ### Installation
 Für die Nutzung dieses Plugins ist ein Bungeecord 1.11 Netzwerk erforderlich. Man kopiert das Plugin in das dazugehörige Verzeichnis und startet das Netzwerk.
