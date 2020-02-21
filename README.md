@@ -1,17 +1,26 @@
 # Party System
 ### Einleitung
-Das Party System ist eines der verbreitesten Systeme der Minecraft Netzwerke. Der Zweck dahinter ist, dass die Party Mitglieder zusammen auf einen Server connecten und ohne nachjoinen dort spielen können.
+Das Party System ist eines der verbreitesten Systeme der Minecraft Netzwerke. Der Zweck dahinter ist, dass alle Spieler einer Party auf dem gleichen Server spielen können und dem Leader immer nachjoinen.
+
 <details>
 <summary>Commands</summary>
-* Mit **/party list** kann der Spieler seine Party anzeigen lassen.
-* Mit **/party leave** verlässt der Spieler die Party und löst sie gegebenenfalls auf.
-* Mit **/party invite <Player>** kann der Leader andere Spieler einladen.
-* Mit **/party accept <Player>** kann der eingeladene Spieler die Anfrage annehmen.
-* Mit **/party deny <Player>** kann der eingeladene Spieler die Anfrage ablehnen.
-* Mit **/party kick <Player>** kann der Leader Spieler aus seiner Party kicken.
-* Mit **/party chat <Message>** können die Spieler in einem internen Chat schreiben
+  
+- **/party list** zeigt Informationen zur Party an.
+
+- **/party leave** verlässt eine bestehende Party.
+
+- **/party invite <Player>** lädt einen Spieler ein.
+  
+- **/party accept <Player>** akzeptiert die Einladung eines bestimmten Spielers.
+  
+- **/party deny <Player>** lehnt die Einladung eines bestimmten Spielers ab.
+  
+- **/party kick <Player>** kickt einen Spieler aus seiner Party.
+  
+- **/party chat <Message>** schickt eine Nachricht in den internen Chat.
+  
 </details>
 
 
 ### Installation
-Für die Nutzung dieses Plugins ist ein Bungeecord 1.11 Netzwerk erforderlich. Man kopiert das Plugin in das dazugehörige Verzeichnis und startet das Netzwerk.
+Für die Nutzung dieses Plugins ist ein Bungeecord 1.11 Netzwerk erforderlich. Man kopiert das Plugin in das Plugin Verzeichnis und startet das Netzwerk.
